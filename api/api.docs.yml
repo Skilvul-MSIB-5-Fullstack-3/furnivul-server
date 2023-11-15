@@ -9,6 +9,7 @@ info:
   contact:
     name: API Support
     url: "www.github.com/naufalalief"
+    email: "vaellouisse@gmail.com"
 servers:
   - url: http://localhost:3000
     description: Local server
