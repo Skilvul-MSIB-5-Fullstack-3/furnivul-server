@@ -10,6 +10,8 @@ const productTypeRouter = require("./product/product.type.route");
 const productRouter = require("./product/product.route");
 const reviewRouter = require("./review/review.route");
 const discussRouter = require("./discuss/discuss.route.js");
+const transactionRouter = require("./transactions/transaction.js");
+const transactionDetailRouter = require("./transactions/transaction.detail.js");
 const auth = require("../middleware/auth");
 
 
@@ -22,5 +24,7 @@ router.use("/product-types", auth, productTypeRouter);
 router.use("/products", auth, productRouter);
 router.use("/reviews", auth, reviewRouter);
 router.use("/discusses", auth, discussRouter);
+router.use("/transactions", auth, transactionRouter);
+router.use("/transaction-details", auth, transactionDetailRouter);
 
 module.exports = router;
