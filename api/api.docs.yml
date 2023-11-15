@@ -1045,7 +1045,7 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/ErrorResponse"
-                
+
     put:
       tags:
         - Review
@@ -1101,6 +1101,257 @@ paths:
               schema:
                 $ref: "#/components/schemas/ErrorResponse"
 
+  /transactions:
+    get:
+      tags:
+        - Transaction
+      security:
+        - bearerAuth: []
+      summary: Get Transaction
+      description: Get Transaction
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Transaction"
+        "400":
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+    post:
+      tags:
+        - Transaction
+      security:
+        - bearerAuth: []
+      summary: Create Transaction
+      description: Create Transaction
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Transaction"
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Transaction"
+        "400":
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+
+  /transactions/{id}:
+    put:
+      tags:
+        - Transaction
+      security:
+        - bearerAuth: []
+      summary: Update Transaction
+      description: Update Transaction
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Transaction"
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Transaction"
+        "400":
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+
+    get:
+      tags:
+        - Transaction
+      security:
+        - bearerAuth: []
+      summary: Get Transaction
+      description: Get Transaction
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: OK
+        "400":
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+
+    delete:
+      tags:
+        - Transaction
+      security:
+        - bearerAuth: []
+      summary: Delete Transaction
+      description: Delete Transaction
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "204":
+          description: No Content
+        "400":
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+
+  /transaction-details:
+    get:
+      tags:
+        - TransactionDetails
+      security:
+        - bearerAuth: []
+      summary: Get Transaction Details
+      description: Get Transaction Details
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/TransactionDetails"
+        "400":
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+
+    post:
+      tags:
+        - TransactionDetails
+      security:
+        - bearerAuth: []
+      summary: Create Transaction Details
+      description: Create Transaction Details
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/TransactionDetails"
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/TransactionDetails"
+        "400":
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+  /transaction-details/{id}:
+    get:
+      tags:
+        - TransactionDetails
+      security:
+        - bearerAuth: []
+      summary: Get Transaction Details
+      description: Get Transaction Details
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: OK
+        "400":
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+
+    put:
+      tags:
+        - TransactionDetails
+      security:
+        - bearerAuth: []
+      summary: Update Transaction Details
+      description: Update Transaction Details
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/TransactionDetails"
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/TransactionDetails"
+        "400":
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+
+    delete:
+      tags:
+        - TransactionDetails
+      security:
+        - bearerAuth: []
+      summary: Delete Transaction Details
+      description: Delete Transaction Details
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "204":
+          description: No Content
+        "400":
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
 
 components:
   securitySchemes:
@@ -1170,7 +1421,7 @@ components:
           items:
             type: string
             format: ObjectId
-          example: 
+          example:
             - 5f9b0b3b9b7b3b1b3c3b3b3b
             - 5f9b0b3b9b7b3b1b3c3b3b3c
             - 5f9b0b3b9b7b3b1b3c3b3b3d
@@ -1275,6 +1526,39 @@ components:
         comment:
           type: string
           example: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla euismod, nisl eget ultricies ultrices, nunc nisl ultricies nunc, quis
+
+    Transaction:
+      type: object
+      properties:
+        date:
+          type: string
+          example: 2020-10-30T00:00:00.000Z
+
+    TransactionDetails:
+      type: object
+      properties:
+        _transactionId:
+          type: string
+          format: ObjectId
+          example: 5f9b0b3b9b7b3b1b3c3b3b3b
+        _productId:
+          type: string
+          format: ObjectId
+          example: 5f9b0b3b9b7b3b1b3c3b3b3b
+        _courierId:
+          type: string
+          format: ObjectId
+          example: 5f9b0b3b9b7b3b1b3c3b3b3b
+        _courierServiceId:
+          type: string
+          format: ObjectId
+          example: 5f9b0b3b9b7b3b1b3c3b3b3b
+        qty:
+          type: integer
+          example: 2
+        subtotal:
+          type: integer
+          example: 2000000
 
     LoginResponse:
       type: object
