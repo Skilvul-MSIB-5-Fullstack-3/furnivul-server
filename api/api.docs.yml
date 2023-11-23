@@ -11,6 +11,8 @@ info:
     url: "https://github.com/naufalalief/"
     email: "vaellouisse@gmail.com"
 servers:
+  - url: http://localhost:3000/
+    description: Local Server
   - url: https://clever-gray-pocketbook.cyclic.app/
     description: Cyclic App
 paths:
