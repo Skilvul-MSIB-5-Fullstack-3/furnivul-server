@@ -24,7 +24,7 @@ const userSchema = new Schema(
       type: Schema.Types.ObjectId,
       ref: "Role",
     },
-    image_url: string,
+    image_url: String,
   },
   {
     timestamps: true,
