@@ -71,6 +71,16 @@ module.exports = {
         );
       }
 
+      const isExist = await User.findOne({ email });
+      if (isExist) {
+        return sendErrorResponse(
+          res,
+          409,
+          "Conflict",
+          new Error("Email already registered")
+        );
+      }
+
       const salt = await bcrypt.genSalt(10);
       let hash = await bcrypt.hash(password, salt);
       password = hash;
