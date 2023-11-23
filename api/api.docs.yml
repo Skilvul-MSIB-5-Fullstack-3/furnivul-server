@@ -1888,6 +1888,9 @@ components:
         description:
           type: string
           example: Furniture untuk ruang tamu
+        image_url:
+          type: string
+          example: https://www.google.com/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png
 
     ProductType:
       type: object
