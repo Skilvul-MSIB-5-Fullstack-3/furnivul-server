@@ -83,7 +83,12 @@ module.exports = {
       }
 
       const user = await User.findById(id);
-      sendSuccessResponse(res, 200, "Get user by id success" + user.fullname, user);
+      sendSuccessResponse(
+        res,
+        200,
+        "Get user by id success " + user.fullname,
+        user
+      );
     } catch (error) {
       sendErrorResponse(res, 500, "Error get user by id", error);
     }
