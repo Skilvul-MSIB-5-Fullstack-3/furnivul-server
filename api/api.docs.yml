@@ -1536,7 +1536,7 @@ paths:
               schema:
                 $ref: "#/components/schemas/ErrorResponse"
 
-  /transaction/:transactionId/transaction-details:
+  /transaction/{transactionId}/transaction-details:
     get:
       tags:
         - Transaction Details
@@ -1544,6 +1544,12 @@ paths:
         - bearerAuth: []
       summary: Get Transaction Details
       description: Get Transaction Details
+      parameters:
+        - name: transactionId
+          in: path
+          required: true
+          schema:
+            type: string
       responses:
         "200":
           description: OK
@@ -1565,6 +1571,12 @@ paths:
         - bearerAuth: []
       summary: Create Transaction Details
       description: Create Transaction Details
+      parameters:
+        - name: transactionId
+          in: path
+          required: true
+          schema:
+            type: string
       requestBody:
         content:
           application/json:
@@ -1583,7 +1595,7 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/ErrorResponse"
-  /transaction/:transactionId/transaction-details/{id}:
+  /transaction/{transactionId}/transaction-details/{id}:
     get:
       tags:
         - Transaction Details
@@ -1592,6 +1604,11 @@ paths:
       summary: Get Transaction Details
       description: Get Transaction Details
       parameters:
+        - name: transactionId
+          in: path
+          required: true
+          schema:
+            type: string
         - name: id
           in: path
           required: true
@@ -1615,6 +1632,11 @@ paths:
       summary: Update Transaction Details
       description: Update Transaction Details
       parameters:
+        - name: transactionId
+          in: path
+          required: true
+          schema:
+            type: string
         - name: id
           in: path
           required: true
@@ -1647,6 +1669,11 @@ paths:
       summary: Delete Transaction Details
       description: Delete Transaction Details
       parameters:
+        - name: transactionId
+          in: path
+          required: true
+          schema:
+            type: string
         - name: id
           in: path
           required: true
