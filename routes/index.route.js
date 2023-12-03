@@ -26,7 +26,7 @@ router.use("/product-types", productTypeRouter);
 router.use("/products", productRouter);
 router.use("/reviews", reviewRouter);
 router.use("/discusses", discussRouter);
-router.use("/discusses/:id/replies", auth, replyRouter);
+router.use("/discusses/:id/replies", replyRouter);
 router.use("/cart", auth, cartRouter);
 router.use("/transactions", auth, transactionRouter);
 router.use("/transaction/:transactionId/transaction-details", auth, transactionDetailRouter);

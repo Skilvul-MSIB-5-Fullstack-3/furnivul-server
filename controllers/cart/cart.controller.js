@@ -36,7 +36,9 @@ module.exports = {
   getDatabyID: async (req, res) => {
     try {
       const { id } = req.params;
-      const cart = await Cart.findById(id).populate("_productId");
+      const cart = await Cart.find({
+        _productId: id,
+      }).populate("_productId");
 
       if (!cart) {
         return sendErrorResponse(
@@ -56,9 +58,12 @@ module.exports = {
   updateData: async (req, res) => {
     try {
       const { id } = req.params;
-      const { _productId } = req.body;
+      const { _productId, qty } = req.body;
 
-      const isExist = await Product.findById(_productId);
+      const isExist = await Product.find({
+        _productId: _productId,
+        qty: qty,
+      });
 
       if (!isExist) {
         return sendErrorResponse(
@@ -73,6 +78,7 @@ module.exports = {
         id,
         {
           _productId,
+          qty,
         },
         {
           new: true,
@@ -122,7 +128,7 @@ module.exports = {
       const cart = await Cart.create({
         _userId: id,
         _productId,
-      }).populate("_productId");
+      });
 
       sendSuccessResponse(res, 200, "Success add data", cart);
     } catch (error) {
